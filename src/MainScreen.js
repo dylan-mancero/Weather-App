@@ -1,4 +1,5 @@
 import React from 'react';
+import ShowMore from './ShowMore';
 
 class MainScreen extends React.Component {
   constructor(props){
@@ -56,6 +57,9 @@ class MainScreen extends React.Component {
             <div className="location">{this.state.location}</div>
             <div className="temp">{this.state.temp}</div>
             <div className="cond">{this.state.condition}</div>
+            <div>
+              <button onClick={this.props.handleShowMore}>Show more</button>
+            </div>
           </div>
 
         </main>
