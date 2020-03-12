@@ -11,7 +11,7 @@ class LogInScreen extends Component {
         <main>
           <form onSubmit={this.props.handleClick}>
           
-            <div className="name">Welcome to our app</div>
+            <div className="name">Ay gang gang</div>
             
             <div className="login-box">
               <input
