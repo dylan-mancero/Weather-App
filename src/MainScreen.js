@@ -13,6 +13,7 @@ class MainScreen extends React.Component {
     condition: "",
     api_key: '4db0d564befccdb49c4954e9d1abb7e4',
     base_url: 'https://api.openweathermap.org/data/2.5/',
+    clothes: ""
   }
 
   searchHandler = (e) => {
@@ -28,6 +29,19 @@ class MainScreen extends React.Component {
             temp: Math.round(result.main.temp)+"°C", 
             condition: result.weather[0].main + ' (' + result.weather[0].description + ')'
           });
+          
+          
+          if (Math.round(result.main.temp)>=20){
+            this.setState({clothes: "hot"});
+          }
+          else if (Math.round(result.main.temp)<20 && result.weather[0].main=="Rain"){
+            this.setState({clothes: "rainy"});
+          }
+          else if (Math.round(result.main.temp)<20){
+            this.setState({clothes: "cold"});
+          }
+
+
         } else {
           this.setState({
             temp: '', 
@@ -60,6 +74,9 @@ class MainScreen extends React.Component {
             <div>
               <button onClick={this.props.handleShowMore}>Show more</button>
             </div>
+          </div>
+          <div className={this.state.clothes}>
+              
           </div>
 
         </main>
