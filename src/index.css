@@ -28,6 +28,7 @@ body {
 
 main {
   min-height: 100vh;
+  position: relative;
 }
 
 .login-box .login-bar {
@@ -196,4 +197,34 @@ main {
 .lbl{
   color: white;
   text-align:center;
+}
+.cold{
+  margin: 20px 70px 10px;
+  height: 300px;
+  background-image: url('./assets/cold-clothes.png');
+  background-position: center;
+  background-size: cover;
+  
+}
+.hot{
+  margin: 20px 70px 10px;
+  height: 300px;
+  background-image: url('./assets/hot-clothes.jpeg');
+  background-position: center;
+  background-size: cover;
+}
+.rainy{
+  margin: 20px 70px 10px;
+  height: 300px;
+  background-image: url('./assets/rainyboy.png');
+  background-position: center;
+  background-size: cover;
+}
+
+.default{
+  margin: 20px 70px 10px;
+  height: 300px;
+  background-image: url('./assets/normal.jpeg');
+  background-position: center;
+  background-size: cover;
 }
