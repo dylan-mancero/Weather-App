@@ -2,7 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
 
+h1, h2, h3, h4, h5, h6, p{
+  text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
 }
 
 body {
@@ -18,7 +21,7 @@ body {
   background-position: bottom;
   color: #fff;
 	width: 414px;
-  height: 736px;
+  height: 900px;
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
@@ -82,7 +85,7 @@ main {
 
 .search-box {
   width: 100%;
-  margin: 0 0 75px;
+  margin-bottom: 20px;
 }
 
 .search-box .search-bar {
@@ -125,6 +128,7 @@ main {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 
 .info-box .location {
   color: #FFF;
@@ -242,4 +246,26 @@ main {
   background-image: url('./assets/normal.jpeg');
   background-position: center;
   background-size: cover;
+}
+
+
+.clothes-box{
+  display: block;
+}
+
+.clothes-box img{
+  margin-bottom: 20px;
+  filter: invert(0.9);
+  width: 100px;
+}
+
+
+.accessory{
+  float:right;
+}
+
+.accessory img{
+  margin-bottom: 20px;
+  filter: invert(0.9);
+  width: 80px;
 }
