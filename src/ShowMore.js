@@ -28,7 +28,7 @@ class ShowMore extends Component {
    }
 
   weatherHandler = () => {
-    var location = "London";
+    var location = this.props.location;
     fetch(this.state.base_url+'weather?q='+location+'&units=metric&APPID='+this.state.api_key)
       .then(res => res.json())
       .then(result => {
