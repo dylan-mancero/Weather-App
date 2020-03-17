@@ -11,7 +11,7 @@ class MainScreen extends React.Component {
     name: this.props.username,
     location: "",
     locationFullName: "",
-    locationAvailable: false,
+    locationAutomatic: "",
     temp: "",
     condition: "",
     api_key: '4db0d564befccdb49c4954e9d1abb7e4',
@@ -23,7 +23,7 @@ class MainScreen extends React.Component {
     fetch("http://ip-api.com/json")
       .then(res => res.json())
       .then(result => {
-        this.setState({location: result.city+', '+result.country, locationAvailable: true});
+        this.setState({locationAutomatic: result.city+', '+result.country});
       });
   }
 
@@ -78,17 +78,17 @@ class MainScreen extends React.Component {
             <div className="name">Welcome, {this.state.name}</div>
           </div>
           <div className="search-box">
-            <input type="text" onChange={this.searchHandler} value={this.state.location} className="search-bar" placeholder="Search..."/>
-            {this.state.locationAvailable ? <button onClick={this.searchHandler} value={this.state.location}>Use automatic location ( {this.state.location})</button> : null }
-            
+            <input type="text" onChange={this.searchHandler} className="search-bar" placeholder="Search..."/>
+            <button onClick={this.searchHandler} value={this.state.locationAutomatic}></button>
           </div>
 
+          
           <div className="info-box">
             <div className="location">{this.state.locationFullName}</div>
             <div className="temp">{this.state.temp}</div>
             <div className="cond">{this.state.condition}</div>
             <div>
-              <button onClick={this.props.handleShowMore}>Show more</button>
+              <button className="btn-gradient red large" onClick={this.props.handleShowMore}>Show more</button>
             </div>
           </div>
           <div className={this.state.clothes}></div>

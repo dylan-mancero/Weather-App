@@ -96,7 +96,7 @@ main {
   outline: none;
 
   background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0px 0px 16px 16px;
+  border-radius: 16px 16px 0px 0px ;
   margin-top: -25px;
 
   box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
@@ -109,6 +109,21 @@ main {
 
 .search-box .search-bar:focus {
   background-color: rgba(255, 255, 255, 0.75);
+}
+
+
+.search-box button {
+  background-color: white;
+  padding: 15px;
+  float: right;
+  margin-top:-42px;
+  margin-right:10px;
+  width: 20px;
+  height: 20px;
+  
+  background-image: url('./assets/gps.png');
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .info-box .location {
