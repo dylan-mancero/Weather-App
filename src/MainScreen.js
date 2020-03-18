@@ -1,5 +1,6 @@
 import React from 'react';
-import ShowMore from './ShowMore';
+import WeatherDetails from './WeatherDetails';
+import CurrentTime from './CurrentTime';
 
 
 
@@ -18,7 +19,7 @@ class MainScreen extends React.Component {
     condition: "",
     api_key: '4db0d564befccdb49c4954e9d1abb7e4',
     base_url: 'https://api.openweathermap.org/data/2.5/',
-    showWeather: 'none',
+    showWeather: false,
 
 
     clothesHead: "default",
@@ -46,12 +47,14 @@ class MainScreen extends React.Component {
         if(result.name !== undefined){
           console.log(result)
           this.setState({
-            showWeather: 'block',
+            showWeather: true,
             locationAvailable: false,
             locationFullName: result.name+", "+result.sys.country, 
             temp: Math.round(result.main.temp)+"°C", 
             condition: result.weather[0].main + ' (' + result.weather[0].description + ')'
           });
+
+          this.props.handleLocation(this.state.locationFullName);
           
           if (Math.round(result.main.temp) < 0){
             // Less than 0
@@ -69,9 +72,9 @@ class MainScreen extends React.Component {
           
           else if (Math.round(result.main.temp) >= 15){
             // 15 - 25
-            this.setState({clothesHead: "cap"});
+            this.setState({clothesHead: "overall"});
             this.setState({clothesTop: "hoodie"});
-            this.setState({clothesBottom: "cap"});
+            this.setState({clothesBottom: "sneaker"});
           }
           
           else {
@@ -83,11 +86,11 @@ class MainScreen extends React.Component {
 
           if(result.weather[0].main == "Rain"){
             this.setState({accessory1: "umbrella"});
-            this.setState({accessory2: "boot"});
-            this.setState({accessory3: "hand-bag"});
+            this.setState({accessory2: "boot-2"});
+            this.setState({accessory3: "shopping-bag"});
           } else if (result.weather[0].main == "Clouds") {
             this.setState({accessory1: "cap"});
-            this.setState({accessory2: "pullover"});
+            this.setState({accessory2: "pamela"});
             this.setState({accessory3: "portfolio"});
           } else if (result.weather[0].main == "Clear") {
             this.setState({accessory1: "hat"});
@@ -128,46 +131,24 @@ class MainScreen extends React.Component {
             <input type="text" onChange={this.searchHandler} className="search-bar" placeholder="Search..."/>
             <button onClick={this.searchHandler} value={this.state.locationAutomatic}></button>
           </div>
-
-          <div className="weatherDisplay">
-            <div className="info-box">
-              <div className="location">{this.state.locationFullName}</div>
-              <div className="temp">{this.state.temp}</div>
-              <div className="cond">{this.state.condition}</div>
-              <br/>
-            
-            </div>
-            <div>
-              <p>What should you wear today?</p>
-            </div>
-            <br></br>
-
-            <div className="row">
-              <div className="col-6">
-                <div className="clothes-box clothesHead">
-                  <img src={process.env.PUBLIC_URL + 'clothes/'+this.state.clothesHead+'.png'}></img>
-                </div>
-                <div className="clothes-box clothesTop">
-                  <img src={process.env.PUBLIC_URL + 'clothes/'+this.state.clothesTop+'.png'}></img>
-                </div>
-                <div className="clothes-box clothesBottom">
-                  <img src={process.env.PUBLIC_URL + 'clothes/'+this.state.clothesBottom+'.png'}></img>
-                </div>
-              </div>
-
-              <div className="col-6 accessory">
-                <img src={process.env.PUBLIC_URL + 'clothes/'+this.state.accessory1+'.png'}></img><br></br>
-                <img src={process.env.PUBLIC_URL + 'clothes/'+this.state.accessory2+'.png'}></img><br></br>
-                <img src={process.env.PUBLIC_URL + 'clothes/'+this.state.accessory3+'.png'}></img>
-              </div>
-            </div>
-          </div>
-
+          { 
+            this.state.showWeather? 
+              <WeatherDetails 
+                locationFullName={this.state.locationFullName}
+                temp={this.state.temp}
+                condition={this.state.condition}
+                clothesHead={this.state.clothesHead}
+                clothesTop={this.state.clothesTop}
+                clothesBottom={this.state.clothesBottom}
+                accessory1={this.state.accessory1}
+                accessory2={this.state.accessory2}
+                accessory3={this.state.accessory3}
+                handleShowMore={this.props.handleShowMore}
+              />
+              :
+              <CurrentTime></CurrentTime>
+          }
           
-          <br></br>
-          <div>
-            <button className="btn-gradient black large" onClick={this.props.handleShowMore}>Next five days</button>
-          </div>
         </main>
 
       </div>

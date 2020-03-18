@@ -10,10 +10,8 @@ class LogInScreen extends Component {
       <div className="login">
         <main>
           <form onSubmit={this.props.handleClick}>
-          
-            <div className="name"><h3>Welcome!</h3></div>
-            
             <div className="login-box">
+              <div className="alert alert-secondary text-center">Login with your name to continue.</div>
               <input
                 className="login-bar" 
                 type="text" 
