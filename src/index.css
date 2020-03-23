@@ -9,17 +9,31 @@ body {
 
 }
 
-.app {
+.app,.coldbg,.toohot{
   display: flex;
 	flex-direction: column;
-  background-image: url('./assets/bg.png');
+  
   background-size: cover;
   background-position: bottom;
   color: #fff;
   padding-top: 20px;
   padding-left: 20px;
   padding-right: 20px;
-	margin: 0 auto;
+  margin: 0 auto;
+  transition: 0.5s ease-out;
+}
+.app{
+  background-image: url('./assets/bg.png');
+}
+.coldbg{
+  background-image: url('./assets/coldbg.png');
+  background-size: cover;
+  transition: 0.5s ease-out;
+}
+.toohot{
+  background-image: url('./assets/toohot.png');
+  background-size: cover;
+  transition: 0.5s ease-out;
 }
 
 .weatherDisplay{
@@ -55,6 +69,7 @@ body {
 main {
   min-height: 100vh;
   position: relative;
+  
 }
 
 .login-box .login-bar {

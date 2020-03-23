@@ -20,6 +20,7 @@ class MainScreen extends React.Component {
     api_key: '4db0d564befccdb49c4954e9d1abb7e4',
     base_url: 'https://api.openweathermap.org/data/2.5/',
     showWeather: false,
+    background: "app",
 
 
     clothesHead: "default",
@@ -61,6 +62,7 @@ class MainScreen extends React.Component {
             this.setState({clothesHead: 'winter-hat'});
             this.setState({clothesTop: 'jacket-4'});
             this.setState({clothesBottom: 'mittens'});
+            this.props.handleBG("coldbg");
           }
 
           else if (Math.round(result.main.temp) > 25){
@@ -68,6 +70,7 @@ class MainScreen extends React.Component {
             this.setState({clothesHead: 'glasses'});
             this.setState({clothesTop: 'polo'});
             this.setState({clothesBottom: 'shorts'});
+            this.props.handleBG("app");
           }
           
           else if (Math.round(result.main.temp) >= 15){
@@ -75,6 +78,7 @@ class MainScreen extends React.Component {
             this.setState({clothesHead: "overall"});
             this.setState({clothesTop: "hoodie"});
             this.setState({clothesBottom: "sneaker"});
+            this.props.handleBG("toohot");
           }
           
           else {
