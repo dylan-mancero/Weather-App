@@ -3,11 +3,6 @@ import React from 'react';
 
 
 class WeatherDetails extends React.Component {
-  constructor(props){
-    super(props);
-  }
-
-
   nameHandler = (e) => {
     this.setState({name: e.target.value});
   }
@@ -29,21 +24,21 @@ class WeatherDetails extends React.Component {
             <p>What should you wear today?</p>
 
             <div className="clothes-box clothesHead">
-            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.clothesHead+'.png'}></img>
+            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.clothesHead+'.png'} alt="clothesHead"></img>
             </div>
             <div className="clothes-box clothesTop">
-            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.clothesTop+'.png'}></img>
+            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.clothesTop+'.png'} alt="clothesTop"></img>
             </div>
             <div className="clothes-box clothesBottom">
-            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.clothesBottom+'.png'}></img>
+            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.clothesBottom+'.png'} alt="clothesBottom"></img>
             </div>
         </div>
 
         <div className="col-6 accessory">
             <p>Recommended accessories</p>
-            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.accessory1+'.png'}></img><br></br>
-            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.accessory2+'.png'}></img><br></br>
-            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.accessory3+'.png'}></img>
+            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.accessory1+'.png'} alt="accessory1"></img><br></br>
+            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.accessory2+'.png'} alt="accessory2"></img><br></br>
+            <img src={process.env.PUBLIC_URL + 'clothes/'+this.props.accessory3+'.png'} alt="accessory3"></img>
         </div>
         </div>
         <br></br>

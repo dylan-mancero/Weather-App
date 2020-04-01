@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { format, fromUnixTime } from 'date-fns';
 
 
-var output = {};
 class ShowMore extends Component {
   constructor(props) {
       super(props);
@@ -71,20 +70,20 @@ class ShowMore extends Component {
     for(var i = 0; i < forecast.length; i++){
       const condition = forecast[i].weather[0].main;
       var pic = '';
-      if(condition == "Clouds"){
+      if(condition === "Clouds"){
         pic = 'cloud';
-      } else if(condition == "Sunny" || condition == "Clear") {
+      } else if(condition === "Sunny" || condition === "Clear") {
         pic = 'sun';
-      } else if(condition == "Snow") {
+      } else if(condition === "Snow") {
         pic = 'snow';
-      } else if(condition == "Rain") {
+      } else if(condition === "Rain") {
         pic = 'rain';
       } else{
         pic = 'sky';
       }
       results.push(
           <li className="list-group-item" key={Math.random()}>
-            <img width='40px' src={process.env.PUBLIC_URL+'icons/'+pic+'.png'}></img><br></br>
+            <img width='40px' src={process.env.PUBLIC_URL+'icons/'+pic+'.png'} alt={"icon"+Math.random()}></img><br></br>
             {format(fromUnixTime(forecast[i].dt), 'ha')}<br/>
             {Math.round(forecast[i].main.temp)}°C
           </li>
@@ -94,7 +93,7 @@ class ShowMore extends Component {
       <div className="showmore">
         <div className="back-button-container">
             <button  onClick={this.props.handleGoBack}>
-              <img className="back-button" src={process.env.PUBLIC_URL+'icons/back.png'}></img>
+              <img className="back-button" src={process.env.PUBLIC_URL+'icons/back.png'} alt="<"></img>
             </button>
         </div>
         <center>

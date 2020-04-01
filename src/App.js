@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Navbar from './Navbar';
 import LogInScreen from './LogInScreen';
 import MainScreen from './MainScreen';
 import ShowMore from './ShowMore';
@@ -58,7 +57,8 @@ class App extends Component {
       <div className={this.state.background}>
         
         <main className="">
-          <div>            
+          <div>        
+            {/* Displaying different pages (depends on state) */}
             {this.state.loginscreen ? <LogInScreen handleUsername={this.handleUsername} handleClick={this.showMainScreen} username={this.state.username} /> : null }
             {this.state.mainscreen ? <MainScreen handleLocation={this.handleLocation} handleShowMore={this.showShowMore} username={this.state.username} handleBG={this.handleBG} /> : null }
             {this.state.showmorescreen ? <ShowMore username={this.state.username} location={this.state.location} handleGoBack={this.handleGoBack} /> : null }

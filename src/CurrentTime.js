@@ -3,7 +3,7 @@ import moment from "moment";
 
 
 
-class CurrentTime extends Component {
+class CurrentTime extends React.Component {
     state = {
         time_h: moment().format("HH"),
         time_m: moment().format("MM"),
@@ -12,15 +12,18 @@ class CurrentTime extends Component {
     }
 
     componentDidMount() {
-        this.state.timer = setInterval(
-            () => (
-                this.setState({
-                    time_h: moment().format("HH"),
-                    time_m: moment().format("MM"),
-                    time_s: moment().format("ss")
-                })
-            )
-        , 100)
+        this.setState({
+            timer: setInterval(
+                () => (
+                    this.setState({
+                        time_h: moment().format("HH"),
+                        time_m: moment().format("MM"),
+                        time_s: moment().format("ss")
+                    })
+                )
+            , 100)
+        });
+
     }
 
     componentWillUnmount(){
@@ -29,7 +32,7 @@ class CurrentTime extends Component {
 
     render(){
         return(
-            <div className>
+            <div className="time-cont">
                 <h1 className="time">{this.state.time_h}</h1>
                 <h1 className="time">{this.state.time_m}</h1>
                 <h1 className="time">{this.state.time_s}</h1>
