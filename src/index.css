@@ -203,6 +203,7 @@ main {
 }
 
 .back-button-container{
+  z-index: 99999;
   position: absolute;
 }
 .back-button{

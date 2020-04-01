@@ -48,7 +48,6 @@ class App extends Component {
   }
 
   handleGoBack = () => {
-    alert("lk");
     this.setState({ showmorescreen: false });
     this.setState({ mainscreen: true });
   }

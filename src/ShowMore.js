@@ -83,7 +83,7 @@ class ShowMore extends Component {
         pic = 'sky';
       }
       results.push(
-          <li className="list-group-item">
+          <li className="list-group-item" key={Math.random()}>
             <img width='40px' src={process.env.PUBLIC_URL+'icons/'+pic+'.png'}></img><br></br>
             {format(fromUnixTime(forecast[i].dt), 'ha')}<br/>
             {Math.round(forecast[i].main.temp)}°C
