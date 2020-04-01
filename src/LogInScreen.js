@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Navbar from './Navbar';
 
 class LogInScreen extends Component {
   constructor(props) {
@@ -9,6 +10,7 @@ class LogInScreen extends Component {
     return (
       <div className="login">
         <main>
+          <Navbar/>
           <form onSubmit={this.props.handleClick}>
             <div className="login-box">
               <div className="alert alert-secondary text-center">Login with your name to continue.</div>

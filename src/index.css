@@ -41,16 +41,15 @@ body {
 }
 
 .navbar{
-  background: rgb(131,58,180);
-  background: linear-gradient(180deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(255,145,0,1) 100%);
 
   text-shadow: none;
   border-bottom: 1px solid white;
 
-  padding-top: 20px;
+  padding-top: 10px;
 
   border-radius: 0;
   width: 100%;
+  margin-bottom: 10px;
 }
 
 .nav-text{
@@ -60,7 +59,7 @@ body {
 
 .time{
   text-align: center;
-  font-size: 90px;
+  font-size: 70px;
 }
 
 .alert{
@@ -125,7 +124,7 @@ main {
 
 .search-box {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .search-box .search-bar {
@@ -171,6 +170,7 @@ main {
 
 
 .info-box .location {
+  margin-top: 15px;
   color: #FFF;
   font-size: 32px;
   font-weight: 500;
@@ -232,7 +232,7 @@ main {
 .name-box .name {
   text-align: center;
   color: #FFF;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 300;
   text-align: center;
   text-shadow: 2px 2px rgba(50, 50, 70, 0.5);
@@ -286,8 +286,7 @@ main {
 .clothes-box img{
   margin-bottom: 20px;
   filter: invert(0.9);
-  width:  100px;
-  height: 100px;
+  width:  70px;
 }
 
 
@@ -298,8 +297,7 @@ main {
 .accessory img{
   margin-bottom: 20px;
   filter: invert(0.9);
-  width: 100px;
-  height: 100px;
+  width: 70px;
 }
 
 .list-group, .list-group-item{

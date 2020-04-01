@@ -1,5 +1,6 @@
 import React from 'react';
 import WeatherDetails from './WeatherDetails';
+import Navbar from './Navbar';
 import CurrentTime from './CurrentTime';
 
 
@@ -29,6 +30,9 @@ class MainScreen extends React.Component {
     accessory3: "default",
     clothesTop: "default",
     clothesBottom: "default",
+
+
+    navbar: true,
   }
 
   ipLookUp  = () => {
@@ -50,6 +54,7 @@ class MainScreen extends React.Component {
           this.setState({
             showWeather: true,
             locationAvailable: false,
+            navbar: false,
             locationFullName: result.name+", "+result.sys.country, 
             temp: Math.round(result.main.temp)+"°C", 
             condition: result.weather[0].main + ' (' + result.weather[0].description + ')'
@@ -180,6 +185,7 @@ class MainScreen extends React.Component {
     return (
       <div className="main">
         <main>
+          {this.state.navbar ? <Navbar/> : null }
           <div className="name-box">
             <div className="name">Welcome, {this.state.name}</div>
           </div>

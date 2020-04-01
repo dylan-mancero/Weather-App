@@ -6,7 +6,7 @@ class Navbar extends Component {
         return(
                 <nav className="navbar">
                     <div className="rlweather">
-                        <h3 className="nav-text">RLWeather</h3>
+                        <h5 className="nav-text">RLWeather</h5>
                         <p className="nav-text">The real weather</p>
                     </div>
                     <div className="group13">

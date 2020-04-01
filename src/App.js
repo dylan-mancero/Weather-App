@@ -56,7 +56,7 @@ class App extends Component {
   render() {
     return (
       <div className={this.state.background}>
-        <Navbar/>
+        
         <main className="">
           <div>            
             {this.state.loginscreen ? <LogInScreen handleUsername={this.handleUsername} handleClick={this.showMainScreen} username={this.state.username} /> : null }
