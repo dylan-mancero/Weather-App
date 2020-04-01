@@ -30,6 +30,9 @@ class ShowMore extends Component {
             showWeather: 'block',
             location: result.name+", "+result.sys.country,
             temp: Math.round(result.main.temp)+"°C", 
+            feels_like: Math.round(result.main.feels_like)+"°C",
+            pressure: Math.round(result.main.pressure)+'pa',
+            humidity: Math.round(result.main.humidity)+'%',
             sunrise: format(fromUnixTime(result.sys.sunrise), 'hh:iia'), 
             sunset: format(fromUnixTime(result.sys.sunset), 'hh:iia'), 
             condition: result.weather[0].main + ' (' + result.weather[0].description + ')'
@@ -66,8 +69,22 @@ class ShowMore extends Component {
     const forecast = this.state.forecast.slice(0,4);
     const results = [];
     for(var i = 0; i < forecast.length; i++){
+      const condition = forecast[i].weather[0].main;
+      var pic = '';
+      if(condition == "Clouds"){
+        pic = 'cloud';
+      } else if(condition == "Sunny" || condition == "Clear") {
+        pic = 'sun';
+      } else if(condition == "Snow") {
+        pic = 'snow';
+      } else if(condition == "Rain") {
+        pic = 'rain';
+      } else{
+        pic = 'sky';
+      }
       results.push(
           <li className="list-group-item">
+            <img width='40px' src={process.env.PUBLIC_URL+'icons/'+pic+'.png'}></img><br></br>
             {format(fromUnixTime(forecast[i].dt), 'ha')}<br/>
             {Math.round(forecast[i].main.temp)}°C
           </li>
@@ -75,19 +92,29 @@ class ShowMore extends Component {
     }
     return (
       <div className="showmore">
-        <main>
-          <h1>{this.state.location}</h1>
-          <h3>{this.state.temp}</h3>
-          <hr></hr>
-          <p>Sunrise: {this.state.sunrise}</p>
-          <p>Sunset: {this.state.sunset}</p>
+        <div className="back-button-container">
+            <img className="back-button"  onClick={this.props.handleGoBack} src={process.env.PUBLIC_URL+'icons/back.png'}></img>
+        </div>
+        <center>
+          <main>
+            <h1>{this.state.location}</h1>
+            <h3 className="temp">{this.state.temp}</h3>
+            <hr></hr>
+            <p><span className='small-title'>Sunrise</span> {this.state.sunrise}</p>
+            <p><span className='small-title'>Sunset</span> {this.state.sunset}</p>
+            <p><span className='small-title'>Feels like</span> {this.state.feels_like}</p>
+            <p><span className='small-title'>Pressure</span> {this.state.pressure}</p>
+            <p><span className='small-title'>Humidity</span> {this.state.humidity}</p>
 
-          
-        Forecast:
-          <ul className="list-group list-group-horizontal text-center">
-            {results}
-          </ul>
-        </main>
+
+          <hr></hr>
+            
+          <p><strong>Forecast</strong></p>
+            <ul className="list-group list-group-horizontal justify-content-center">
+              {results}
+            </ul>
+          </main>
+        </center>
       </div>
     );
   }

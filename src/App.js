@@ -47,13 +47,17 @@ class App extends Component {
     this.setState({location: location});
   }
 
+  handleGoBack = () => {
+    this.setState({ showmorescreen: false });
+    this.setState({ mainscreen: true });
+  }
   
 
   render() {
     return (
       <div className={this.state.background}>
         <Navbar/>
-        <main>
+        <main className="app">
           <div>            
             {this.state.loginscreen ? <LogInScreen handleUsername={this.handleUsername} handleClick={this.showMainScreen} username={this.state.username} /> : null }
             {this.state.mainscreen ? <MainScreen handleLocation={this.handleLocation} handleShowMore={this.showShowMore} username={this.state.username} handleBG={this.handleBG} /> : null }
