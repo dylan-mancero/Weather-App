@@ -15,11 +15,14 @@ class App extends Component {
       showmorescreen: false, 
       username: "",
       location: "",
+      background: "app",
     };
     this.showMainScreen=this.showMainScreen.bind(this);
     this.handleLocation=this.handleLocation.bind(this);
   }
-
+  handleBG=(temp)=>{
+    this.setState({background: temp});
+  }
   showMainScreen = (e) =>{
     e.preventDefault();
     this.setState({ loginscreen: false });
@@ -52,13 +55,13 @@ class App extends Component {
 
   render() {
     return (
-      <div className="app-frame">
+      <div className={this.state.background}>
         <Navbar/>
         <main className="app">
           <div>            
             {this.state.loginscreen ? <LogInScreen handleUsername={this.handleUsername} handleClick={this.showMainScreen} username={this.state.username} /> : null }
-            {this.state.mainscreen ? <MainScreen handleLocation={this.handleLocation} handleShowMore={this.showShowMore} username={this.state.username} /> : null }
-            {this.state.showmorescreen ? <ShowMore handleGoBack={this.handleGoBack} username={this.state.username} location={this.state.location} /> : null }
+            {this.state.mainscreen ? <MainScreen handleLocation={this.handleLocation} handleShowMore={this.showShowMore} username={this.state.username} handleBG={this.handleBG} /> : null }
+            {this.state.showmorescreen ? <ShowMore username={this.state.username} location={this.state.location} /> : null }
           </div>
         </main>
         
