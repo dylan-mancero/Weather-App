@@ -93,7 +93,9 @@ class ShowMore extends Component {
     return (
       <div className="showmore">
         <div className="back-button-container">
-            <img className="back-button"  onClick={this.props.handleGoBack} src={process.env.PUBLIC_URL+'icons/back.png'}></img>
+            <button  onClick={this.props.handleGoBack}>
+              <img className="back-button" src={process.env.PUBLIC_URL+'icons/back.png'}></img>
+            </button>
         </div>
         <center>
           <main>

@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   handleGoBack = () => {
+    alert("lk");
     this.setState({ showmorescreen: false });
     this.setState({ mainscreen: true });
   }
@@ -61,7 +62,7 @@ class App extends Component {
           <div>            
             {this.state.loginscreen ? <LogInScreen handleUsername={this.handleUsername} handleClick={this.showMainScreen} username={this.state.username} /> : null }
             {this.state.mainscreen ? <MainScreen handleLocation={this.handleLocation} handleShowMore={this.showShowMore} username={this.state.username} handleBG={this.handleBG} /> : null }
-            {this.state.showmorescreen ? <ShowMore username={this.state.username} location={this.state.location} /> : null }
+            {this.state.showmorescreen ? <ShowMore username={this.state.username} location={this.state.location} handleGoBack={this.handleGoBack} /> : null }
           </div>
         </main>
         
