@@ -57,28 +57,100 @@ class MainScreen extends React.Component {
 
           this.props.handleLocation(this.state.locationFullName);
           
-          if (Math.round(result.main.temp) < 0){
-            // Less than 0
+
+          //Really cold temperature
+          if (Math.round(result.main.temp) <= 4){
             this.setState({clothesHead: 'winter-hat'});
             this.setState({clothesTop: 'jacket-4'});
-            this.setState({clothesBottom: 'mittens'});
+            this.setState({clothesBottom: 'boot'});
             this.props.handleBG("coldbg");
+            this.setState({accessory1: "scarf"});
+            //seperate checks for specific weather conditions
+            if (result.weather[0].main == "Snow") {
+              this.setState({accessory2: "boot-2"});
+              this.setState({accessory3: "gloves"});
+            } else if(result.weather[0].main == "Rain") {
+              this.setState({accessory2: "umbrella"});
+              this.setState({accessory3: "boot-1"});
+            } else if (result.weather[0].main == "Clouds") {
+              this.setState({accessory2: "backpack"});
+              this.setState({accessory3: "jacket-1"});
+            } else if (result.weather[0].main == "Clear") {
+              this.setState({accessory1: "jeans"});
+              this.setState({accessory2: "pullover"});
+              this.setState({accessory3: "hand-bag"});
+            }
           }
 
-          else if (Math.round(result.main.temp) > 25){
-            // 25 and more
-            this.setState({clothesHead: 'glasses'});
-            this.setState({clothesTop: 'polo'});
-            this.setState({clothesBottom: 'shorts'});
-            this.props.handleBG("app");
-          }
-          
-          else if (Math.round(result.main.temp) >= 15){
-            // 15 - 25
-            this.setState({clothesHead: "overall"});
-            this.setState({clothesTop: "hoodie"});
-            this.setState({clothesBottom: "sneaker"});
+          //hot temperature
+          else if (Math.round(result.main.temp) >= 20){
+            // 20 and more
+            this.setState({clothesHead: 'polo'});
+            this.setState({clothesTop: 'shorts'});
+            this.setState({clothesBottom: 'slipper'});
             this.props.handleBG("toohot");
+            //specific checks for possible variations
+            if (result.weather[0].main == "Clear") {
+              this.setState({accessory1: "cap"});
+              this.setState({accessory2: "pamela"});
+              this.setState({accessory3: "glasses"});
+            }
+            else if (result.weather[0].main == "Clouds") {
+              this.setState({accessory1: "dress"});
+              this.setState({accessory2: "cap"});
+              this.setState({accessory3: "hand-bag"});
+            } else if(result.weather[0].main == "Rain"){
+              this.setState({accessory1: "umbrella"});
+              this.setState({accessory2: "shoe"});
+              this.setState({accessory3: "bathrobe"});
+            }
+          }
+          //warm temperature, but under 20
+          else if (Math.round(result.main.temp) >= 16){
+            this.setState({clothesHead: "shirt"});
+            this.setState({clothesTop: "jeans"});
+            this.setState({clothesBottom: "dress-4"});
+            this.props.handleBG("app");
+            //seperate checks
+            if (result.weather[0].main == "Clear") {
+              this.setState({accessory1: "cap"});
+              this.setState({accessory2: "skirt"});
+              this.setState({accessory3: "glases"});
+            }
+            else if (result.weather[0].main == "Clouds") {
+              this.setState({accessory1: "jacket"});
+              this.setState({accessory2: "pants"});
+              this.setState({accessory3: "backpack"});
+            } else if(result.weather[0].main == "Rain"){
+              this.setState({accessory1: "umbrella"});
+              this.setState({accessory2: "backpack"});
+              this.setState({accessory3: "sneaker"});
+            }
+          }
+          // cold temperatures
+          else if (Math.round(result.main.temp) >= 5){
+            this.setState({clothesHead: "jacket-3"});
+            this.setState({clothesTop: "jeans"});
+            this.setState({clothesBottom: "sneaker"});
+            this.props.handleBG("app");
+            //seperate checks
+            if(result.weather[0].main == "Rain"){
+              this.setState({accessory1: "umbrella"});
+              this.setState({accessory2: "boot-1"});
+              this.setState({accessory3: "trench-coat"});
+            } else if (result.weather[0].main == "Clear") {
+              this.setState({accessory1: "backpack"});
+              this.setState({accessory2: "jacket"});
+              this.setState({accessory3: "hand-bag"});
+            } else if (result.weather[0].main == "Snow") {
+              this.setState({accessory2: "boot-2"});
+              this.setState({accessory3: "gloves"});
+              this.setState({accessory1: "scarf"});
+            } else if (result.weather[0].main == "Clouds") {
+              this.setState({accessory1: "scarf"});
+              this.setState({accessory2: "winter-hat"});
+              this.setState({accessory3: "pullover"});
+            }
           }
           
           else {
@@ -86,32 +158,12 @@ class MainScreen extends React.Component {
             this.setState({clothesHead: 'hat'});
             this.setState({clothesTop: 'jacket-4'});
             this.setState({clothesBottom: 'pants'});
-          }
-
-          if(result.weather[0].main == "Rain"){
-            this.setState({accessory1: "umbrella"});
-            this.setState({accessory2: "boot-2"});
-            this.setState({accessory3: "shopping-bag"});
-          } else if (result.weather[0].main == "Clouds") {
-            this.setState({accessory1: "cap"});
-            this.setState({accessory2: "pamela"});
-            this.setState({accessory3: "portfolio"});
-          } else if (result.weather[0].main == "Clear") {
-            this.setState({accessory1: "hat"});
-            this.setState({accessory2: "suitcase"});
-            this.setState({accessory3: "hand-bag"});
-          } else if (result.weather[0].main == "Snow") {
-            this.setState({accessory1: "gloves"});
-            this.setState({accessory2: "boot-1"});
-            this.setState({accessory3: "hand-bag"});
-          } else {
-            this.setState({accessory1: "tie"});
-            this.setState({accessory2: "socks"});
-            this.setState({accessory3: "necklace"});
+            console.log('no conditions met');
           }
         
 
         } else {
+          console.log('No found location');
           this.setState({
             temp: '', 
             condition: ''
