@@ -3,7 +3,7 @@ import moment from "moment";
 
 
 
-class CurrentTime extends React.Component {
+class CurrentTime extends Component {
     state = {
         time_h: moment().format("HH"),
         time_m: moment().format("MM"),
