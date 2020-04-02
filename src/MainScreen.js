@@ -12,6 +12,7 @@ class MainScreen extends React.Component {
   }
 
   state = {
+    //state storage for resources needed from the API fetch
     name: this.props.username,
     location: "",
     locationFullName: "",
@@ -21,9 +22,10 @@ class MainScreen extends React.Component {
     api_key: '4db0d564befccdb49c4954e9d1abb7e4',
     base_url: 'https://api.openweathermap.org/data/2.5/',
     showWeather: false,
+    //background is default colour
     background: "app",
 
-
+    //clothes are file names
     clothesHead: "default",
     accessory1: "default",
     accessory2: "default",
@@ -34,7 +36,8 @@ class MainScreen extends React.Component {
 
     navbar: true,
   }
-
+  //handles the location when the button on the right 
+  //of search bar
   ipLookUp  = () => {
     fetch("http://ip-api.com/json")
       .then(res => res.json())
@@ -42,9 +45,11 @@ class MainScreen extends React.Component {
         this.setState({locationAutomatic: result.city+', '+result.country});
       });
   }
-
+  //handles the event everytime the user makes a change in the search bar
   searchHandler = (e) => {
+    // location variable is what the user typed
     var location = e.target.value;
+    //api call is saved in state base_url
     fetch(this.state.base_url+'weather?q='+location+'&units=metric&APPID='+this.state.api_key)
       .then(res => res.json())
       .then(result => {
