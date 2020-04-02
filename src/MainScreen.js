@@ -55,13 +55,15 @@ class MainScreen extends React.Component {
       .then(result => {
         this.setState({location: location});
         if(result.name !== undefined){
+          //debuggin purposes
           console.log(result)
           this.setState({
+            //sets components into view
             showWeather: true,
             locationAvailable: false,
             navbar: false,
             locationFullName: result.name+", "+result.sys.country, 
-            temp: Math.round(result.main.temp)+"°C", 
+            temp: Math.round(result.main.temp)+"°C", //stores the temperature
             condition: result.weather[0].main + ' (' + result.weather[0].description + ')'
           });
 

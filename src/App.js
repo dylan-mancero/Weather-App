@@ -19,6 +19,8 @@ class App extends Component {
     this.showMainScreen=this.showMainScreen.bind(this);
     this.handleLocation=this.handleLocation.bind(this);
   }
+  //function that will pass defined background back to App.js
+  //will be called in MainScreen.js
   handleBG=(temp)=>{
     this.setState({background: temp});
   }
@@ -41,11 +43,12 @@ class App extends Component {
     )
   }
   
-
+  //function for passing location from child(mainscreen) back to parent(App)
   handleLocation = (location) => {
     this.setState({location: location});
   }
-
+  //function for reversing back into search bar from show more screen
+  //is called in showmore.js
   handleGoBack = () => {
     this.setState({ showmorescreen: false });
     this.setState({ mainscreen: true });
