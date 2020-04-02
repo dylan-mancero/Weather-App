@@ -1,0 +1,11 @@
+Contribution for second coursework
+
+Samy: javascript functionality, use of OpenWeather API. Created Script for video
+
+Filip: Mainpage navigation, navigation between components implemented, recorded video demonstrating implementation.
+
+Dylan: Dynamic background, logic implementation of clothes selection.
+
+Trevor: Image/resource gatering, editing of our clothes and background.
+
+Siraj: styling of our application, CSS implementation for different screen sizes.
